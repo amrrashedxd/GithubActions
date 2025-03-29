@@ -86,6 +86,12 @@ public class Program
 	// Implement this method following a similar pattern as above
 	public static double Power(string x, string y)
 	{
-		return 0.0;
+    if (x == null || y == null)
+        throw new ArgumentNullException("Inputs cannot be null");
+
+    if (!double.TryParse(x, out double baseValue) || !double.TryParse(y, out double exponent))
+        throw new FormatException("Inputs must be numeric strings");
+
+    return Math.Pow(baseValue, exponent);	
 	}
 }
